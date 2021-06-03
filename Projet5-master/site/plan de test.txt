@@ -1,0 +1,50 @@
+index.js
+
+const importProduit = () => 
+ importe les articles depuis l'api vers le localstorage si il n'y sont pas déjà 
+
+	controle la presence de cameras dans le localStorage et stop la fonction si present 
+	sinon importe les articles via une requete GET à l'adresse de l'API.
+		si la requete se termine avec le code status 200 alors le contenu de la reponse est copier dans le localstorage
+		sinon un message d'erreur apparaitra dans la console.
+
+
+const afficheProduit = () => {
+récupère les produits stocké dans le localStorage et les affiches sur la page
+
+	Controle de l’existence de cameras dans le localStorage
+	si il existe alors son contenu est convertie en javascript et copier dans une variable 
+	sinon un message d'erreur s'affiche dans la console et la fonction s'arrete.
+	
+	test si la variable qui a reçu le contenu du localstorage n'est pas null
+	si elle n'est pas null, on ajoute tout les articles au dans une variable "html" via une boucle for
+	sinon un message d'erreur s'affichera dans la console
+	
+	On ajoute le contenu de la variable "html" au DOM
+
+
+/* action lors d'un clic */
+const actionsClick = (event) => {
+
+	if (event.target.parentElement.parentElement.getAttribute('id')) {
+		var identifiant = event.target.parentElement.parentElement.getAttribute('id');
+		event.stopPropagation();
+		if (listeIdArticles.includes(identifiant)) {
+			localStorage.article = identifiant;
+		} else {
+			console.error("l'id n'appartient a aucun des articles !! ");
+		}
+	} else {
+		console.error("récupération de l'id impossible");
+	}
+	
+}
+
+/* Importations des articles */
+importProduit();
+/* Affichage des articles sous formes de liste */
+afficheProduit();
+/* surveille le click sur les différents produits */
+for(var id of listeIdArticles){
+	document.getElementById(id).addEventListener("click", actionsClick.bind(event));
+}
