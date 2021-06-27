@@ -42,8 +42,8 @@ const actionsClick = (event) => {
 
 /* Importations des articles */
 importProduit();
-/* Affichage des articles sous formes de liste */
-afficheProduit();
+/* Afiste */
+afficheProduit()fichage des articles sous formes de l;
 /* surveille le click sur les différents produits */
 for(var id of listeIdArticles){
 	document.getElementById(id).addEventListener("click", actionsClick.bind(event));
